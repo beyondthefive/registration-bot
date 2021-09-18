@@ -24,6 +24,7 @@ async function check_for_role(client, uid, role_id) {
 };
 
 async function send_message_to_channel(client, channel_id, msg=undefined, embeds=undefined, components=undefined) {
+    try {
 	guild = await client.guilds.fetch(guild_id);
 	channel = await guild.channels.fetch(channel_id);
 
@@ -33,37 +34,88 @@ async function send_message_to_channel(client, channel_id, msg=undefined, embeds
         ...(!(components == undefined) && {components : [components]})
     });
    // await channel.send({embeds: [embeds], components : [components]})
+    }
+    catch(err) {
+        console.log(err);
+    }
 };
 
 async function send_message_to_user(client, user_id, msg) {
+    try {
     await client.users.fetch(user_id).send(msg);
+    }
+    catch(err) {
+        console.log(err);
+    }
 };
 
 async function delete_channel(client, channel_id, reason) {
+    try {
     guild = await client.guilds.fetch(guild_id);
 	channel = await guild.channels.fetch(channel_id);
     await channel.delete(reason);
-
+    }
+    catch(err)
+    {
+        console.log(err);
+    }
 };
+
+async function delete_channels(client, channel_ids, reason) {
+    try{
+    guild = await client.guilds.fetch(guild_id);
+    if(channel_ids.length !== 0) {
+        for(c of channel_ids) {
+            channel = await guild.channels.fetch(c);
+            await channel.delete(reason);
+        }
+    }
+    }
+    catch(err) {
+        console.log(err);
+    }
+}
 
 async function create_channel(client, name, category_id=undefined) {
+    try{
     guild = await client.guilds.fetch(guild_id);
     return guild.channels.create(name, {...(!(category_id == undefined) && {parent : category_id})});
+    }
+    catch(err) {
+        console.log(err);
+    }
 };
 
-async function get_channel(client, channel_id) {
+async function get_channel_by_id(client, channel_id) {
     guild = await client.guilds.fetch(guild_id);
 	channel = await guild.channels.fetch(channel_id);
     return channel;
 }
 
+async function get_channel_by_name(client, channel_name) {
+    guild = await client.guilds.fetch(guild_id);
+    channels = Array.from(guild.channels.cache);
+    channel = channels.find(
+        (channel) => {
+            return channel[1]["name"].toLowerCase() === channel_name
+        })
+    return channel;
+      
+}
+
 async function add_channel_overwrites(client, channel_id, uids, perms) {
+    try {
     guild = await client.guilds.fetch(guild_id);
 	channel = await guild.channels.fetch(channel_id);
     for(uid of uids) {
         member = await guild.members.fetch(uid);
         channel.permissionOverwrites.edit(member, perms);
     }
+    }
+    catch(err) {
+        console.log(err);
+    }
+
 }
 
 
@@ -81,7 +133,10 @@ module.exports = {
     send_message_to_channel : send_message_to_channel,
     send_message_to_user : send_message_to_user,
     delete_channel : delete_channel,
+    delete_channels : delete_channels,
     create_channel : create_channel,
+    get_channel_by_id : get_channel_by_id,
+    get_channel_by_name : get_channel_by_name,
     add_channel_overwrites : add_channel_overwrites
 
 };
