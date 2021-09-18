@@ -34,7 +34,7 @@ for (const file of eventFiles) {
 	}
 }
 
-setInterval(mark_channels_for_deletion, 5000); // should be 600000 (10 mins)
+setInterval(mark_channels_for_deletion, 600000); // should be 600000 (10 mins)
 
 
 
@@ -84,7 +84,7 @@ async function mark_channels_for_deletion() {
             }
             
             // then use setTimeout and discord_utils.delete_channels to delete these after a little less than 10 mins
-            setTimeout(discord_utils.delete_channels, 4900, client, to_be_deleted, "Registration completed"); // should be 570000
+            setTimeout(discord_utils.delete_channels, 570000, client, to_be_deleted, "Registration completed"); // should be 570000
 
         });
 
