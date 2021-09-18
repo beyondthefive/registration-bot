@@ -119,7 +119,7 @@ async function send_welcome_msg() {
 			.setTitle('Welcome to Beyond The Five!')
             .setFooter('We look forward to learning with you!', discord_utils.bt5_logo_link)
             .addFields(
-                { name: 'About Us', value: 'Beyond The Five is a non-profit organization dedicated towards helping students from around the world pursue higher level education through free, online, self-paced courses ranging from AP, SAT/ACT, to college-level courses. https://beyondthefive.org/courses' },
+                { name: 'About Us', value: 'Beyond The Five is a non-profit organization dedicated towards helping students from around the world pursue higher level education through free, online, self-paced courses ranging from AP to college-level courses. https://beyondthefive.org/courses' },
                 { name: 'Registration', value: 'Registration for the 2021-22 school year is now open! Click the \"Register\" button below to get started.'},
                 { name: 'Verification', value: `By clicking the \"Verify Me\" button below, you agree to all of the <#${discord_utils.rules_id}>`},
 
@@ -136,7 +136,7 @@ async function send_rules() {
 			.setTitle('Beyond The Five Community Guidelines & Rules')
             .addFields(
                 { name: 'Rule 1', value: 'Respect all of your other students, teachers, and staff members.' },
-                { name: 'Rule 2', value: 'The sharing of illegal and copyrighted content is forbidden.' },
+                { name: 'Rule 2', value: 'The sharing of illegal and copyrighted content is strictly forbidden.' },
                 { name: 'Rule 3', value: 'Do not discuss anything potentially offensive or uncomfortable. The sharing of inappropriate or explicit content is strictly forbidden. Controversial topics, including current evolving events, can be discussed as long as it’s civil. Political and ideological discussions are generally prohibited.' },
                 { name: 'Rule 4', value: 'Keep topics in their respective channels.' },
                 { name: 'Rule 5', value: 'Advertising, links, and all other types of promotion must be approved by the Community Coordinators.' },
