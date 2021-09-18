@@ -113,7 +113,7 @@ async function send_welcome_msg() {
                 
 			);
     const embed = new MessageEmbed()
-			.setColor('#10247d')
+			.setColor('#2c3c53')
             .setAuthor('Beyond The Five', discord_utils.bt5_logo_link, 'https://beyondthefive.org')
             .setThumbnail(discord_utils.bt5_logo_with_text_link)
 			.setTitle('Welcome to Beyond The Five!')
@@ -131,7 +131,7 @@ async function send_welcome_msg() {
 
 async function send_rules() {
     const embed = new MessageEmbed()
-			.setColor('#10247d')
+			.setColor('#2c3c53')
             .setAuthor('Beyond The Five', discord_utils.bt5_logo_link, 'https://beyondthefive.org')
 			.setTitle('Beyond The Five Community Guidelines & Rules')
             .addFields(
