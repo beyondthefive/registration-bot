@@ -4,6 +4,8 @@ const guild_id = "876513971191046194";
 const registration_category_id = "888273811361902602";
 const welcome_id = "888271675819442226";
 const rules_id = "888271741992984596";
+const verified_id = "888657179408760862";
+const enrolled_id = "877798118094143519";
 const bt5_logo_link = "https://cdn.discordapp.com/attachments/746820839907000341/888643747502514186/Beyond_The_Five_Logo.png"
 const bt5_logo_with_text_link = "https://cdn.discordapp.com/attachments/746820839907000341/888644924516487198/Beyond_The_Five_Logo_Text_White.png";
 
@@ -61,6 +63,8 @@ module.exports = {
     registration_category_id : registration_category_id,
     welcome_id : welcome_id,
     rules_id : rules_id,
+    verified_id : verified_id,
+    enrolled_id : enrolled_id,
     bt5_logo_link : bt5_logo_link,
     bt5_logo_with_text_link : bt5_logo_with_text_link,
     add_role : add_role,

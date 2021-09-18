@@ -8,11 +8,24 @@ client.once('ready', () => {
 	console.log('Ready!');
 	client.user.setActivity('beyondthefive.org', { type: 'WATCHING' });
 
-    send_welcome_msg(); // only once
+    //send_welcome_msg(); // only once
 });
 
 
 client.login(process.env.token);
+
+
+
+const eventFiles = fs.readdirSync('./events').filter(file => file.endsWith('.js'));
+
+for (const file of eventFiles) {
+	const event = require(`./events/${file}`);
+	if (event.once) {
+		client.once(event.name, (...args) => event.execute(...args));
+	} else {
+		client.on(event.name, (...args) => event.execute(...args));
+	}
+}
 
 async function send_welcome_msg() {
     const row = new MessageActionRow()
