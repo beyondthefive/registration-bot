@@ -34,7 +34,7 @@ for (const file of eventFiles) {
 	}
 }
 
-setInterval(mark_channels_for_deletion, 600000); // should be 600000 (10 mins)
+setInterval(mark_channels_for_deletion, 10000); // should be 600000 (10 mins)
 
 
 
