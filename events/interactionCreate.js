@@ -4,6 +4,7 @@ const notion_utils = require('../notion_utils');
 module.exports = {
 	name: 'interactionCreate',
 	execute(interaction, notion) {
+        try {
 		if (!interaction.isButton()) return;
 	    if (interaction.customId == "Verify_Me") {
             discord_utils.check_for_role(interaction.client, interaction.user.id, discord_utils.verified_id).then((has_verified) => {
@@ -77,5 +78,9 @@ module.exports = {
 
 	    }
     return interaction.deferUpdate();
+    }
+    catch(err) {
+        console.log(err);
+    }
     }   
 };

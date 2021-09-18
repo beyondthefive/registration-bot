@@ -41,6 +41,7 @@ setInterval(mark_channels_for_deletion, 5000); // should be 600000 (10 mins)
 
 
 async function mark_channels_for_deletion() {
+    try {
     reg = discord_utils.get_channel_by_id(client, discord_utils.registration_category_id);
     reg.then((reg_const) => {
         reg = Array.from(reg_const.children.values());
@@ -83,12 +84,18 @@ async function mark_channels_for_deletion() {
             }
             
             // then use setTimeout and discord_utils.delete_channels to delete these after a little less than 10 mins
-            setTimeout(discord_utils.delete_channels, 4900, client, to_be_deleted, "Registration completed");
+            setTimeout(discord_utils.delete_channels, 4900, client, to_be_deleted, "Registration completed"); // should be 570000
 
         });
 
 
     })
+
+
+    }
+    catch(err) {
+        console.log(err);
+    }
 }
 
 
@@ -123,6 +130,21 @@ async function send_welcome_msg() {
 };
 
 async function send_rules() {
+    const embed = new MessageEmbed()
+			.setColor('#10247d')
+            .setAuthor('Beyond The Five', discord_utils.bt5_logo_link, 'https://beyondthefive.org')
+			.setTitle('Beyond The Five Community Guidelines & Rules')
+            .addFields(
+                { name: 'Rule 1', value: 'Respect all of your other students, teachers, and staff members.' },
+                { name: 'Rule 2', value: 'The sharing of illegal and copyrighted content is forbidden.' },
+                { name: 'Rule 3', value: 'Do not discuss anything potentially offensive or uncomfortable. The sharing of inappropriate or explicit content is strictly forbidden. Controversial topics, including current evolving events, can be discussed as long as it’s civil. Political and ideological discussions are generally prohibited.' },
+                { name: 'Rule 4', value: 'Keep topics in their respective channels.' },
+                { name: 'Rule 5', value: 'Advertising, links, and all other types of promotion must be approved by the Community Coordinators.' },
+                { name: 'Rule 6', value: 'All decisions made by staff are final. You may appeal and question a decision by contacting the Operational Administrator.' },
+                { name: 'Rule 7', value: 'Abide by Discord’s Terms of Service: https://discord.com/new/terms' },
+                { name: 'Questions?', value: `If you have any questions about these rules, please ask in <#${discord_utils.general_id}>` },
+            )
+    discord_utils.send_message_to_channel(client, discord_utils.rules_id, msg=undefined, embeds=embed);
 
 }
 
