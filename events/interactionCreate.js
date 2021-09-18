@@ -66,7 +66,7 @@ module.exports = {
                         new_channel.then((channel) => {
                             discord_utils.add_channel_overwrites(interaction.client, channel.id, 
                                 [interaction.user.id], { VIEW_CHANNEL: true, SEND_MESSAGES : true});
-                            discord_utils.send_message_to_channel(interaction.client, channel.id, `Registration Form: https://tally.so/r/m6dNOw?ID=${interaction.user.id}`);
+                            discord_utils.send_message_to_channel(interaction.client, channel.id, `<@${interaction.user.id}> \n Registration Form: https://tally.so/r/m6dNOw?ID=${interaction.user.id}`);
                             discord_utils.send_message_to_channel(interaction.client, channel.id, "If you have any questions regarding registration or our courses, **don't submit your application just yet**—you can view a list of FAQs here: "); 
                             discord_utils.send_message_to_channel(interaction.client, channel.id, "If any of your concerns aren't covered in the above FAQs, feel free to ask our Student Records Coordinators here."); 
 
