@@ -57,6 +57,15 @@ async function get_channel(client, channel_id) {
     return channel;
 }
 
+async function add_channel_overwrites(client, channel_id, uids, perms) {
+    guild = await client.guilds.fetch(guild_id);
+	channel = await guild.channels.fetch(channel_id);
+    for(uid of uids) {
+        member = await guild.members.fetch(uid);
+        channel.permissionOverwrites.edit(member, perms);
+    }
+}
+
 
 module.exports = {
     guild_id : guild_id,
@@ -72,6 +81,7 @@ module.exports = {
     send_message_to_channel : send_message_to_channel,
     send_message_to_user : send_message_to_user,
     delete_channel : delete_channel,
-    create_channel : create_channel
+    create_channel : create_channel,
+    add_channel_overwrites : add_channel_overwrites
 
 };
