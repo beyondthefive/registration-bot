@@ -12,7 +12,7 @@ client.once('ready', () => {
 	console.log('Ready!');
 	client.user.setActivity('beyondthefive.org', { type: 'WATCHING' });
 
-    send_welcome_msg(); 
+    //send_welcome_msg(); 
     //send_rules();
 });
 
