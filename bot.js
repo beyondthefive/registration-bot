@@ -74,7 +74,6 @@ async function mark_channels_for_deletion() {
                 if(channel !== undefined) {
                     to_be_deleted.push(channel[1].id); // get the channel ID using that^, then push everything to this list
                     discord_utils.send_message_to_channel(client, channel[1].id, `<@${res.properties["Discord ID"].rich_text[0].plain_text}>, thank you for submitting your application! We will review it shortly. \n This channel will be closed in **ten minutes**--please email \`admissions@beyondthefive.org\` or direct message any of our Student Records Coordinators if you have any further questions.`)
-                    // send a msg in each of the channels to be deleted: this channel will be deleted in 1 hr + if you still have qs, take it to DMs or email admissions
                 }
 
                 }
