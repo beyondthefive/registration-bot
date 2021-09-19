@@ -12,7 +12,7 @@ client.once('ready', () => {
 	console.log('Ready!');
 	client.user.setActivity('beyondthefive.org', { type: 'WATCHING' });
 
-    //send_welcome_msg(); 
+    send_welcome_msg(); 
     //send_rules();
 });
 
@@ -120,8 +120,8 @@ async function send_welcome_msg() {
             .setFooter('We look forward to learning with you!', discord_utils.bt5_logo_link)
             .addFields(
                 { name: 'About Us', value: 'Beyond The Five is a non-profit organization dedicated towards helping students from around the world pursue higher level education through free, online, self-paced courses ranging from AP to college-level courses. https://beyondthefive.org/courses' },
-                { name: 'Registration', value: 'Registration for the 2021-22 school year is now open! Click the \"Register\" button below to get started.'},
-                { name: 'Verification', value: `By clicking the \"Verify Me\" button below, you agree to all of the <#${discord_utils.rules_id}>`},
+                { name: 'Registration', value: 'Registration for the 2021-22 school year is now open! Click \"Register\" to get started.'},
+                { name: 'Verification', value: `By clicking \"Verify Me\", you agree to all of the <#${discord_utils.rules_id}>`},
 
             )
 
