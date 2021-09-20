@@ -1,12 +1,13 @@
 const { create } = require("combined-stream");
 
-const guild_id = "876513971191046194";
-const registration_category_id = "888273811361902602";
-const welcome_id = "888271675819442226";
-const rules_id = "888271741992984596";
-const general_id = "876513971191046197";
-const verified_id = "888657179408760862";
-const enrolled_id = "877798118094143519";
+// all updated to main
+const guild_id = "691976404983611412";
+const registration_category_id = "888882155097309264";
+const welcome_id = "715254355778994267";
+const rules_id = "695982250952622141";
+const general_id = "695982619917025300";
+const verified_id = "714279112671232020";
+const enrolled_id = "696391357022863392";
 const bt5_logo_link = "https://cdn.discordapp.com/attachments/746820839907000341/888643747502514186/Beyond_The_Five_Logo.png"
 const bt5_logo_with_text_link = "https://cdn.discordapp.com/attachments/746820839907000341/888644924516487198/Beyond_The_Five_Logo_Text_White.png";
 
