@@ -1,16 +1,29 @@
 const discord_utils = require('../discord_utils');
 const notion_utils = require('../notion_utils');
+const { Client : DiscordClient, Collection, Intents, Guild, GuildMember, Permissions, MessageActionRow, MessageButton, MessageEmbed } = require('discord.js');
+
+function sleep(ms) {
+  return new Promise((resolve) => {
+    setTimeout(resolve, ms);
+  });
+}
 
 module.exports = {
 	name: 'interactionCreate',
 	execute(interaction, notion) {
         try {
 		if (!interaction.isButton()) return;
+      if(interaction.customId == "Delete_Channel") {
+        discord_utils.delete_channel(interaction.client, interaction.channelId, "Closed registration channel via the button");
+      }
 	    if (interaction.customId == "Verify_Me") {
             discord_utils.check_for_role(interaction.client, interaction.user.id, discord_utils.verified_id).then((has_verified) => {
                 if(!has_verified) {
                     discord_utils.add_role(interaction.client, interaction.user.id, discord_utils.verified_id);
                     interaction.user.send("Verified!");
+                }
+                else if(has_verified){
+                  interaction.user.send("You've already been verified!");
                 }
             });
         }
@@ -67,8 +80,19 @@ module.exports = {
                             discord_utils.add_channel_overwrites(interaction.client, channel.id, 
                                 [interaction.user.id], { VIEW_CHANNEL: true, SEND_MESSAGES : true});
                             discord_utils.send_message_to_channel(interaction.client, channel.id, `<@${interaction.user.id}> \n Registration Form: https://tally.so/r/m6dNOw?ID=${interaction.user.id}`);
-                            discord_utils.send_message_to_channel(interaction.client, channel.id, "If you have any questions regarding registration or our courses, **don't submit your application just yet**—you can view a list of FAQs here: "); 
+                            discord_utils.send_message_to_channel(interaction.client, channel.id, "If you have any questions regarding registration or our courses, **don't submit your application just yet**—you can view a list of FAQs here: https://bit.ly/3nOXsHM"); 
                             discord_utils.send_message_to_channel(interaction.client, channel.id, "If any of your concerns aren't covered in the above FAQs, feel free to ask our Student Records Coordinators here."); 
+                            const row = new MessageActionRow()
+                            .addComponents(
+                                      new MessageButton()
+                                          .setCustomId('Delete_Channel')
+                                .setLabel('Close Channel')
+                                .setStyle('DANGER'),
+                            );
+
+                            sleep(10000);
+
+                            discord_utils.send_message_to_channel(interaction.client, channel.id, msg=`<@${interaction.user.id}> If you're not ready to apply or were just curious, please press the button below to close this channel.`, embeds=undefined, components=row); 
 
                         });
                     }
